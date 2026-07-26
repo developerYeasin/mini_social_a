@@ -15,12 +15,11 @@
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
         "backgroundImage": "./assets/images/android-icon-background.png",
-        "monochromeImage": "./assets/images/android-icon-monochrome.png",
-        "googleServicesFile": "./google-services.json",
-        "package": "com.yeasin.minisocial"
+        "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.yea13sin.mobile"
+      "googleServicesFile": "./google-services.json",
+      "package": "com.yeasin.minisocial"
     },
     "web": {
       "output": "static",

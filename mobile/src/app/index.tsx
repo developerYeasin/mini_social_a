@@ -1,4 +1,9 @@
-import { ActivityIndicator, StyleSheet, TouchableOpacity, View } from "react-native";
+import {
+  ActivityIndicator,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -6,11 +11,11 @@ import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import { MaxContentWidth, Spacing } from "@/constants/theme";
 import { useTheme } from "@/hooks/use-theme";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { api } from "@/lib/api";
 import { FlatList, TextInput } from "react-native-gesture-handler";
 import PostCard from "@/components/post-card";
-import { useRouter } from "expo-router";
+import { useFocusEffect, useRouter } from "expo-router";
 
 export default function HomeScreen() {
   const theme = useTheme();
@@ -47,6 +52,16 @@ export default function HomeScreen() {
     const t = setTimeout(() => loadPosts(1), 300);
     return () => clearTimeout(t);
   }, [query]);
+  const isFirstFocus = useRef(true);
+  useFocusEffect(
+    useCallback(() => {
+      if (isFirstFocus.current) {
+        isFirstFocus.current = false;
+        return;
+      }
+      loadPosts(1);
+    }, [query]),
+  );
 
   return (
     <ThemedView style={styles.container}>
@@ -71,7 +86,10 @@ export default function HomeScreen() {
           <View
             style={[
               styles.search,
-              { backgroundColor: theme.backgroundElement, borderColor: theme.border },
+              {
+                backgroundColor: theme.backgroundElement,
+                borderColor: theme.border,
+              },
             ]}
           >
             <Ionicons name="search" size={18} color={theme.textSecondary} />

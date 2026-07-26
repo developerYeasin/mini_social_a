@@ -3,6 +3,8 @@ import { Link, useRouter } from "expo-router";
 import { useState } from "react";
 import {
   ActivityIndicator,
+  KeyboardAvoidingView,
+  ScrollView,
   StyleSheet,
   TextInput,
   TouchableOpacity,
@@ -41,8 +43,17 @@ export default function LoginScreen() {
 
   return (
     <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.inner}>
-        <View style={styles.card}>
+      <KeyboardAvoidingView
+        style={styles.flex}
+        behavior="padding"
+      >
+        <SafeAreaView style={styles.flex}>
+          <ScrollView
+            contentContainerStyle={styles.inner}
+            keyboardShouldPersistTaps="handled"
+            showsVerticalScrollIndicator={false}
+          >
+            <View style={styles.card}>
           <View style={[styles.logo, { backgroundColor: theme.primarySoft }]}>
             <Ionicons name="chatbubbles" size={30} color={theme.primary} />
           </View>
@@ -116,17 +127,20 @@ export default function LoginScreen() {
             <ThemedText themeColor="textSecondary">
               No account? <ThemedText themeColor="primary">Sign up</ThemedText>
             </ThemedText>
-          </Link>
-        </View>
-      </SafeAreaView>
+            </Link>
+            </View>
+          </ScrollView>
+        </SafeAreaView>
+      </KeyboardAvoidingView>
     </ThemedView>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
+  flex: { flex: 1 },
   inner: {
-    flex: 1,
+    flexGrow: 1,
     justifyContent: "center",
     padding: Spacing.four,
   },
