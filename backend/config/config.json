@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "mini_social_user",
+    "password": "mini_social123456",
+    "database": "mini_social",
+    "host": "88.222.241.192",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "mini_social",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "mini_social_user",
+    "password": "mini_social123456",
+    "database": "mini_social",
+    "host": "88.222.241.192",
+    "dialect": "mysql"
+  }
+}
