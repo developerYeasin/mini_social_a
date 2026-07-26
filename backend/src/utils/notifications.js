@@ -1,9 +1,10 @@
-const admin = require("../../config/firebase");
+const { getMessaging } = require("firebase-admin/messaging");
+require("../../config/firebase");
 
 async function sendPushNotification(fcmToken, title, body) {
   if (!fcmToken) return;
   try {
-    await admin.messaging().send({
+    await getMessaging().send({
       token: fcmToken,
       notification: { title, body },
     });
