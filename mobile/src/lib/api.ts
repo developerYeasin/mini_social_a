@@ -3,7 +3,7 @@ import axios from "axios";
 // Set EXPO_PUBLIC_API_URL in a .env file to override (e.g. your LAN IP for a
 // real device). Falls back to the local backend which runs on port 5000.
 const baseURL =
-  process.env.EXPO_PUBLIC_API_URL ?? "http://localhost:5000/api/v1";
+  process.env.EXPO_PUBLIC_API_URL ?? "https://techzuapi.bizscal.com/api/v1";
 
 export const api = axios.create({
   baseURL,
