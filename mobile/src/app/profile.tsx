@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { ActivityIndicator, StyleSheet, TouchableOpacity, View } from "react-native";
+import {
+  ActivityIndicator,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -13,9 +18,9 @@ import { api } from "@/lib/api";
 export default function ProfileScreen() {
   const theme = useTheme();
   const { signOut } = useAuth();
-  const [email, setEmail] = useState<string | null>(null);
-  const [postCount, setPostCount] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
+  const [postCount, setPostCount] = useState<number | null>(null);
+  const [email, setEmail] = useState<string | null>(null);
 
   useEffect(() => {
     (async () => {
@@ -41,10 +46,15 @@ export default function ProfileScreen() {
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.inner} edges={["bottom"]}>
         {loading ? (
-          <ActivityIndicator style={{ marginTop: Spacing.five }} color={theme.primary} />
+          <ActivityIndicator
+            style={{ marginTop: Spacing.five }}
+            color={theme.primary}
+          />
         ) : (
           <View style={styles.content}>
-            <View style={[styles.avatar, { backgroundColor: theme.primarySoft }]}>
+            <View
+              style={[styles.avatar, { backgroundColor: theme.primarySoft }]}
+            >
               <ThemedText style={[styles.avatarText, { color: theme.primary }]}>
                 {initial}
               </ThemedText>
@@ -53,7 +63,12 @@ export default function ProfileScreen() {
               {email ?? "Unknown"}
             </ThemedText>
 
-            <View style={[styles.statCard, { backgroundColor: theme.card, borderColor: theme.border }]}>
+            <View
+              style={[
+                styles.statCard,
+                { backgroundColor: theme.card, borderColor: theme.border },
+              ]}
+            >
               <Ionicons name="reader-outline" size={22} color={theme.primary} />
               <View>
                 <ThemedText type="subtitle" style={styles.statNumber}>
