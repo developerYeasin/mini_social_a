@@ -97,8 +97,8 @@ Protected routes require the header: `Authorization: Bearer <token>`
 *   **Body (JSON):**
     ```json
     {
-      "email": "user@example.com",
-      "password": "yourpassword"
+      "email": "test@example4.com",
+      "password": "password123"
     }
     ```
 *   **Response:** `{ "token": "jwt_token_string" }`
